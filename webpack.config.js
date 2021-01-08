@@ -2,9 +2,9 @@ const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: {index: './app/app.js'},
+  entry: {index: './src/app/app.js'},
   output: {
-    path: path.join(__dirname, '..', 'dist'),
+    path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].js',
   },
@@ -42,7 +42,7 @@ module.exports = {
       title: "My ThreeJS App",
       filename: "./index.html",
       excludeChunks: [ 'server' ],
-      template: './html/index.ejs'
+      template: './src/html/index.ejs'
     })
   ]
 }
