@@ -32,6 +32,19 @@ module.exports = {
         use: [ 'style-loader', 'css-loader' ]
       },
       {
+        test: /\.(glb|gltf)$/,
+        use:
+        [
+            {
+                loader: 'file-loader',
+                options:
+                {
+                    outputPath: 'models',
+                }
+            }
+        ]
+    },
+      {
        test: /\.(png|svg|jpg|gif)$/,
        use: ['file-loader']
       }

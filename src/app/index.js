@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import resizeCanvas from './scripts/util/resizeCanvas';
 
 function main() {
@@ -13,6 +14,22 @@ function main() {
   camera.position.z = 2;
 
   const scene = new THREE.Scene();
+
+  const loader = new GLTFLoader().setPath("/models/");
+  loader.load('exploded_cube.glb', 
+  function (gtfl) {
+	scene.add(gtfl.scene);
+  },
+  // called while loading is progressing
+  function ( xhr ) {
+	console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  },
+  // called when loading has errors
+  function ( error ) {
+
+	  console.log( 'An error happened', error );
+
+  });
 
   {
     const color = 0xFFFFFF;
